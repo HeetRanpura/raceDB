@@ -1,7 +1,7 @@
 # RaceDB 
 **Real-Time Data Consistency Debugger — Transaction Concurrency Testing & Benchmarking System**
 
-MySQL InnoDB · FastAPI · Vanilla JS · Dark Glassmorphism UI
+MySQL InnoDB · FastAPI
 
 ---
 
