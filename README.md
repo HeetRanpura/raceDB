@@ -10,8 +10,8 @@ MySQL InnoDB · FastAPI
 ### 1. MySQL Setup
 
 ```bash
-mysql -u root -p < sql/01_schema.sql
-mysql -u root -p < sql/02_seed.sql
+mysql -u root -p < database/01_schema.sql
+mysql -u root -p < database/02_seed.sql
 ```
 
 ### 2. Backend
