@@ -99,25 +99,8 @@ async def get_benchmark_detail(run_id: int):
 async def lock_status():
     """Query live InnoDB transaction and lock-wait information."""
     try:
-        conn = get_connection("READ COMMITTED")
-        conn.autocommit = True
-        cur = conn.cursor()
-
-        cur.execute("SELECT * FROM information_schema.innodb_trx LIMIT 20")
-        trx = [_row_to_dict(cur, r) for r in cur.fetchall()]
-
-        # innodb_lock_waits may not exist in MySQL 8+ (replaced by data_lock_waits)
-        try:
-            cur.execute(
-                "SELECT * FROM performance_schema.data_lock_waits LIMIT 20"
-            )
-            waits = [_row_to_dict(cur, r) for r in cur.fetchall()]
-        except Exception:
-            waits = []
-
-        cur.close()
-        conn.close()
-        return {"active_transactions": trx, "lock_waits": waits}
+        from engine.lock_monitor import get_live_lock_status
+        return get_live_lock_status()
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 

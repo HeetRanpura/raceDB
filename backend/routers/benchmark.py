@@ -3,7 +3,7 @@ RaceDB — /run-benchmark router
 """
 from fastapi import APIRouter, HTTPException
 from models import BenchmarkRequest, BenchmarkResponse, AnomalyItem
-from engine.benchmark_engine import run_benchmark
+from engine.benchmark_runner import run_benchmark
 
 router = APIRouter()
 

@@ -1,0 +1,15 @@
+{
+    "isolation": "READ COMMITTED",
+    "transactions": {
+        "UserA": [
+            {"step": 1, "query": "SELECT balance FROM accounts WHERE account_id = 1 FOR SHARE;"},
+            {"step": 3, "query": "UPDATE accounts SET balance = balance - 200 WHERE account_id = 1;"},
+            {"step": 5, "query": "COMMIT;"}
+        ],
+        "UserB": [
+            {"step": 2, "query": "SELECT balance FROM accounts WHERE account_id = 2 FOR SHARE;"},
+            {"step": 4, "query": "UPDATE accounts SET balance = balance - 100 WHERE account_id = 2;"},
+            {"step": 6, "query": "COMMIT;"}
+        ]
+    }
+}
