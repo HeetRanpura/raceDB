@@ -4,7 +4,7 @@ RaceDB — /logs, /benchmark-results, /lock-status routers
 from typing import List, Optional
 from fastapi import APIRouter, HTTPException, Query
 from models import LogEntry, BenchmarkSummary
-from database import get_connection
+from db.connection import get_connection
 import mysql.connector
 
 router = APIRouter()
