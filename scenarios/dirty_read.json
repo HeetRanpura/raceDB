@@ -1,0 +1,13 @@
+{
+    "isolation": "READ UNCOMMITTED",
+    "transactions": {
+        "T1": [
+            {"step": 1, "query": "UPDATE accounts SET balance = balance - 500 WHERE account_id = 3;"},
+            {"step": 3, "query": "ROLLBACK;"}
+        ],
+        "T2": [
+            {"step": 2, "query": "SELECT balance FROM accounts WHERE account_id = 3;"},
+            {"step": 4, "query": "COMMIT;"}
+        ]
+    }
+}

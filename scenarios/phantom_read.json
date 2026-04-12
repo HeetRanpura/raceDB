@@ -1,0 +1,14 @@
+{
+    "isolation": "READ COMMITTED",
+    "transactions": {
+        "T1": [
+            {"step": 1, "query": "SELECT balance FROM accounts WHERE account_id = 5;"},
+            {"step": 3, "query": "SELECT balance FROM accounts WHERE account_id = 5;"},
+            {"step": 5, "query": "COMMIT;"}
+        ],
+        "T2": [
+            {"step": 2, "query": "UPDATE accounts SET balance = balance + 1000 WHERE account_id = 5;"},
+            {"step": 4, "query": "COMMIT;"}
+        ]
+    }
+}

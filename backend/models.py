@@ -6,6 +6,14 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 
 
+# ───────────────────────────────── Shared ────────────────────────────────
+
+class AnomalyItem(BaseModel):
+    type: str
+    description: str
+    txn_ids: Optional[str] = None
+
+
 # ───────────────────────────────── Debug ─────────────────────────────────
 
 class TransactionStep(BaseModel):
@@ -60,13 +68,8 @@ class BenchmarkRequest(BaseModel):
     isolation_level: str = Field("READ COMMITTED")
 
 
-class AnomalyItem(BaseModel):
-    type: str
-    description: str
-    txn_ids: Optional[str] = None
-
-
 class BenchmarkResponse(BaseModel):
+    # Fix #9: run_id is now int (auto-incremented DB primary key from _save_benchmark_result)
     run_id: int
     total_transactions: int
     successful: int
@@ -74,6 +77,8 @@ class BenchmarkResponse(BaseModel):
     deadlocks: int
     anomalies_detected: int
     avg_latency_ms: float
+    p50_latency_ms: float = 0.0
+    p95_latency_ms: float = 0.0
     throughput_tps: float
     isolation_level: str
     pattern: str

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS execution_log (
     session_id  VARCHAR(64),
     txn_id      VARCHAR(64),
     query_text  TEXT,
-    status      ENUM('SUCCESS','FAILED','DEADLOCK','ROLLBACK','TIMEOUT') NOT NULL DEFAULT 'SUCCESS',
+    status      ENUM('SUCCESS','FAILED','DEADLOCK','ROLLBACK','TIMEOUT','COMMIT','WAITING','BLOCKED','ABORTED') NOT NULL DEFAULT 'SUCCESS',
     latency_ms  FLOAT,
     error_msg   TEXT,
     executed_at TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
