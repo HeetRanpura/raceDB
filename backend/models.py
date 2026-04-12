@@ -47,7 +47,7 @@ class DebugResponse(BaseModel):
     run_id: str
     isolation_level: str
     steps: List[StepResult]
-    anomalies: List[Dict[str, Any]] = []
+    anomalies: List[AnomalyItem] = []
     summary: Dict[str, Any] = {}
 
 
