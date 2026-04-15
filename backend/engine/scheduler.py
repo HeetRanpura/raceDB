@@ -12,7 +12,7 @@ def run_debug_deterministic(
 ) -> Dict[str, Any]:
     """
     Executes an interleaved transaction schedule deterministically across Threads.
-    Enables genuine InnoDB Lock Contention and Deadlock errors organically!
+    Enables genuine Database Lock Contention and Deadlock errors organically!
     """
     run_id = str(uuid.uuid4())[:8]
 
@@ -63,7 +63,7 @@ def run_debug_deterministic(
         worker.dispatch_step(step_no, query)
 
         # Wait for the thread to complete the step.
-        # If it hits an InnoDB row lock, it blocks natively in MySQL.
+        # If it hits an Database row lock, it blocks natively in MySQL.
         # We cap the wait at 100ms; if exceeded, we assume it's WAITING.
         completed = worker.completed_event.wait(timeout=0.1)
 
@@ -74,7 +74,7 @@ def run_debug_deterministic(
                 "query": query,
                 "status": "WAITING (LOCK)",
                 "latency_ms": 100.0,
-                "error": "Thread naturally blocked waiting for InnoDB lock.",
+                "error": "Thread naturally blocked waiting for Database lock.",
             })
         else:
             res = worker.last_result

@@ -65,7 +65,7 @@ class DebugWorkerThread(threading.Thread):
             if query is None:
                 continue
 
-            # This will properly block against MySQL InnoDB locks!
+            # This will properly block against MySQL locks!
             exec_result = execute_query_safely(self.conn, query)
 
             self.last_result = {
@@ -79,7 +79,7 @@ class DebugWorkerThread(threading.Thread):
             }
 
             # Fix #3: On fatal error, immediately rollback so MySQL doesn't
-            # keep an orphaned transaction in innodb_trx.
+            # keep an orphaned transaction in Database_trx.
             if exec_result.status in ("FAILED", "DEADLOCK", "TIMEOUT"):
                 self.fatal_error = True
                 try:

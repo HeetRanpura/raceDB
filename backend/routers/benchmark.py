@@ -10,7 +10,7 @@ router = APIRouter()
 
 @router.post("/run-benchmark", response_model=BenchmarkResponse, tags=["Benchmark"])
 async def benchmark_endpoint(req: BenchmarkRequest):
-    """Launch a concurrent workload benchmark against MySQL InnoDB."""
+    """Launch a concurrent workload benchmark against MySQL."""
     try:
         raw = run_benchmark(
             num_transactions=req.num_transactions,

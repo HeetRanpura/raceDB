@@ -1,7 +1,7 @@
 # RaceDB 
 **Real-Time Data Consistency Debugger — Transaction Concurrency Testing & Benchmarking System**
 
-MySQL InnoDB · FastAPI
+MySQL · FastAPI
 
 ---
 
@@ -55,10 +55,10 @@ Frontend (4-tab SPA: Debug / Benchmark / Logs / History)
 FastAPI Backend
     ↓
 Debug Engine (deterministic scheduler, per-txn MySQL sessions)
-Benchmark Engine (ThreadPoolExecutor, concurrent InnoDB workload)
+Benchmark Engine (ThreadPoolExecutor, concurrent database workload)
 Anomaly Detector (post-run log analysis)
     ↓
-MySQL 8 InnoDB (racedb schema)
+MySQL 8 Database (racedb schema)
 ```
 
 ---
@@ -72,7 +72,7 @@ MySQL 8 InnoDB (racedb schema)
 | GET | `/logs` | Paginated execution log |
 | GET | `/benchmark-results` | All historical runs |
 | GET | `/benchmark-results/{run_id}` | Run detail + anomalies |
-| GET | `/lock-status` | Live InnoDB trx + lock waits |
+| GET | `/lock-status` | Live Database trx + lock waits |
 | GET | `/accounts` | Current account state |
 | POST | `/accounts/reset` | Reset account balances |
 

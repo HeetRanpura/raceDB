@@ -16,7 +16,7 @@ from routers import debug, benchmark, logs
 app = FastAPI(
     title="RaceDB — Real-Time Data Consistency Debugger",
     description=(
-        "Transaction concurrency testing & benchmarking system for MySQL InnoDB. "
+        "Transaction concurrency testing & benchmarking system. "
         "Supports deterministic debug scenarios and high-concurrency load testing."
     ),
     version="1.0.0",

@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS accounts (
     version     INT           NOT NULL DEFAULT 0,
     created_at  TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
     updated_at  TIMESTAMP     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ;
 
 -- Every individual query executed is recorded here
 CREATE TABLE IF NOT EXISTS execution_log (
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS execution_log (
     INDEX idx_run_id (run_id),
     INDEX idx_txn_id (txn_id),
     INDEX idx_status (status)
-) ENGINE=InnoDB;
+) ;
 
 -- Aggregate metrics per benchmark run
 CREATE TABLE IF NOT EXISTS benchmark_results (
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS benchmark_results (
     pattern             VARCHAR(50)   NOT NULL DEFAULT 'mixed',
     concurrency_level   INT           NOT NULL DEFAULT 5,
     timestamp           TIMESTAMP     DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+) ;
 
 -- Individual anomaly instances per run
 CREATE TABLE IF NOT EXISTS anomaly_log (
@@ -56,4 +56,4 @@ CREATE TABLE IF NOT EXISTS anomaly_log (
     detected_at TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (run_id) REFERENCES benchmark_results(run_id) ON DELETE CASCADE,
     INDEX idx_run_id (run_id)
-) ENGINE=InnoDB;
+) ;

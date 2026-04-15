@@ -82,7 +82,7 @@ function showProgress(panel, total) {
         <div class="progress-bar animated" style="width:100%"></div>
       </div>
       <div style="font-size:0.875rem;color:var(--text-muted);margin-top:8px">
-        Executing concurrent workload against MySQL InnoDB…
+        Executing concurrent workload against MySQL…
       </div>
     </div>`;
 }

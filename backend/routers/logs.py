@@ -93,18 +93,6 @@ async def get_benchmark_detail(run_id: int):
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
-# ── Lock Status ──────────────────────────────────────────────────────────
-
-@router.get("/lock-status", tags=["Debug"])
-async def lock_status():
-    """Query live InnoDB transaction and lock-wait information."""
-    try:
-        from engine.lock_monitor import get_live_lock_status
-        return get_live_lock_status()
-    except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc)) from exc
-
-
 # ── Accounts ─────────────────────────────────────────────────────────────
 
 @router.get("/accounts", tags=["Accounts"])

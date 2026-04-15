@@ -59,7 +59,7 @@ def detect_anomalies(
         if status == "DEADLOCK":
             anomalies.append({
                 "type": "DEADLOCK",
-                "description": f"Genuine InnoDB Deadlock Error (1213) triggered by {txn}.",
+                "description": f"Genuine Database Deadlock Error (1213) triggered by {txn}.",
                 "txn_ids": txn,
             })
             txn_status[txn] = "ABORTED"
