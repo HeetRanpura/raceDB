@@ -40,7 +40,11 @@
   </header>
 
   <nav class="nav-tabs" role="tablist" aria-label="Main navigation">
-    <button class="nav-tab" role="tab" data-tab="debug" id="tab-debug" aria-controls="panel-debug" aria-selected="true">
+    <button class="nav-tab active" role="tab" data-tab="dashboard" id="tab-dashboard" aria-controls="panel-dashboard" aria-selected="true">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+      Dashboard
+    </button>
+    <button class="nav-tab" role="tab" data-tab="debug" id="tab-debug" aria-controls="panel-debug" aria-selected="false">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
       Debug Mode
     </button>
@@ -56,51 +60,102 @@
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
       History
     </button>
+    <button class="nav-tab" role="tab" data-tab="playground" id="tab-playground" aria-controls="panel-playground" aria-selected="false">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+      Query Console
+    </button>
   </nav>
 
   <main class="page-body" role="main">
-    <section class="hero-grid">
-      <div class="hero-copy">
-        <div class="hero-kicker">The Obsidian Lens</div>
-        <h1>Trace every race condition like a cinematic incident report.</h1>
-        <p>Debug exact interleavings, stress the engine with concurrent workloads, inspect live SQL telemetry, and replay benchmark history without leaving one focused control surface.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="#panel-debug">Run a scenario</a>
-          <span class="hero-meta">Live anomaly lab for transactional consistency experiments</span>
+    <section class="tab-panel active" id="panel-dashboard" role="tabpanel" aria-labelledby="tab-dashboard">
+      <div class="section-header section-header-wide">
+        <div>
+          <div class="section-kicker">Core Banking System</div>
+          <h2 class="section-title">System Dashboard</h2>
+          <p class="section-subtitle">Real-time aggregate telemetry of banking operations, accounts, and loan portfolios.</p>
         </div>
       </div>
 
-      <div class="hero-panel card">
-        <div class="hero-panel-head">
-          <span class="section-kicker">System telemetry</span>
-          <span class="badge badge-success">Connected</span>
+      <div class="dash-grid">
+        <!-- Metric 1: Total Liquidity -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <span class="dash-card-title">System Liquidity</span>
+            <div class="dash-card-icon blue">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+          </div>
+          <div class="dash-card-value" id="dash-liquidity" style="color: var(--blue)">$0</div>
         </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="hero-stat-label">Modes</span>
-            <strong>4 active views</strong>
+
+        <!-- Metric 2: Active Customers -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <span class="dash-card-title">Active Customers</span>
+            <div class="dash-card-icon accent">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            </div>
           </div>
-          <div class="hero-stat">
-            <span class="hero-stat-label">Purpose</span>
-            <strong>Concurrency diagnostics</strong>
+          <div class="dash-card-value" id="dash-customers">0</div>
+        </div>
+
+        <!-- Metric 3: Total Loan Book -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <span class="dash-card-title">Loan Portfolio</span>
+            <div class="dash-card-icon purple">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
+            </div>
           </div>
-          <div class="hero-stat">
-            <span class="hero-stat-label">Target</span>
-            <strong>MySQL transaction anomalies</strong>
+          <div class="dash-card-value" id="dash-loans" style="color: var(--purple)">$0</div>
+        </div>
+
+        <!-- Metric 4: Active Cards -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <span class="dash-card-title">Cards Issued</span>
+            <div class="dash-card-icon warning">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+            </div>
+          </div>
+          <div class="dash-card-value" id="dash-cards">0</div>
+        </div>
+      </div>
+
+      <!-- Bottom Split -->
+      <div class="dash-card-split">
+        <div class="dash-card">
+          <div class="dash-card-header" style="margin-bottom:0">
+            <span class="dash-card-title">Account Distribution</span>
+          </div>
+          <div id="dash-account-distribution" style="margin-top:0.5rem">
+            <!-- Rendered via JS -->
+            <div class="empty-state-desc" style="text-align:left; padding:1rem 0">Loading distribution...</div>
           </div>
         </div>
-        <div class="scan-card">
-          <div class="scan-card-row">
-            <span>Debug trace</span>
-            <span class="hero-signal">Ready</span>
+
+        <!-- Telemetry Status -->
+        <div class="dash-card" style="display:flex; flex-direction:column; justify-content:center;">
+          <div class="dash-card-header" style="margin-bottom: 2rem">
+            <span class="dash-card-title">Engine Telemetry</span>
+            <span class="badge badge-success">Connected</span>
           </div>
-          <div class="scan-card-row">
-            <span>Benchmark telemetry</span>
-            <span class="hero-signal">Streaming</span>
-          </div>
-          <div class="scan-card-row">
-            <span>Execution logs</span>
-            <span class="hero-signal">Awaiting run</span>
+          <div class="scan-card" style="box-shadow:none; border:none; padding:0; background:transparent">
+            <div class="scan-card-row">
+              <span>Database Engine</span>
+              <span class="hero-signal" style="color:var(--text-primary)">MySQL 8.0</span>
+            </div>
+            <div class="scan-card-row">
+              <span>Default Isolation</span>
+              <span class="hero-signal" style="color:var(--accent)">REPEATABLE READ</span>
+            </div>
+            <div class="scan-card-row">
+              <span>Concurrency Analyzer</span>
+              <span class="hero-signal" style="color:var(--blue)">Ready</span>
+            </div>
+            <div class="scan-card-row" style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid var(--border)">
+              <span style="color:var(--text-muted)">Navigate using the tabs above to explore interactive scenarios, benchmark tools, and the query console.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -353,6 +408,84 @@
         </div>
       </div>
     </section>
+
+    <section class="tab-panel" id="panel-playground" role="tabpanel" aria-labelledby="tab-playground">
+      <div class="section-header section-header-wide">
+        <div>
+          <div class="section-kicker">Query Console</div>
+          <h2 class="section-title">Schema Explorer & Query Engine</h2>
+          <p class="section-subtitle">Execute MySQL queries with JOINs, aggregations, and subqueries. Explore the banking schema and visualize entity relationships.</p>
+        </div>
+      </div>
+
+      <div class="playground-layout">
+        <!-- Left: Query Editor -->
+        <div class="stack">
+          <div class="card">
+            <div class="card-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              Query Editor
+              <span id="query-status" class="query-status">Ready</span>
+            </div>
+            <div class="form-group" style="margin-bottom:0.75rem">
+              <textarea id="sql-editor" placeholder="-- Write your SQL query here&#10;SELECT * FROM users;" rows="8" spellcheck="false">SELECT a.account_id, u.first_name, u.last_name, a.account_type, a.balance
+FROM accounts a
+JOIN users u ON a.user_id = u.user_id;</textarea>
+            </div>
+            <div class="playground-actions">
+              <button id="playground-run-btn" class="btn btn-primary" type="button">
+                <div class="btn-spinner"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>
+                <span class="btn-label">Run Query</span>
+              </button>
+              <button id="playground-clear-btn" class="btn btn-ghost" type="button">Clear</button>
+              <span class="playground-hint">Ctrl + Enter to execute</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Quick Queries
+            </div>
+            <div id="example-queries" class="example-queries-grid"></div>
+          </div>
+        </div>
+
+        <!-- Right: Results -->
+        <div class="card results-card">
+          <div class="card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+            Query Results
+          </div>
+          <div id="query-results">
+            <div class="empty-state cinematic-empty" style="min-height:12rem">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
+              <div class="empty-state-title">Results will appear here</div>
+              <div class="empty-state-desc">Write a SQL query above and press Run or Ctrl+Enter.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ER Diagram Section -->
+      <div class="er-section">
+        <div class="section-header" style="margin-top:2rem">
+          <div class="section-kicker">Schema Visualization</div>
+          <h2 class="section-title">Entity-Relationship Diagram</h2>
+          <p class="section-subtitle">Auto-generated ER diagram of the banking schema with all table relationships and foreign keys.</p>
+        </div>
+        <div class="card er-card">
+          <div id="er-diagram-container">
+            <div class="empty-state cinematic-empty">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+              <div class="empty-state-title">Loading ER diagram…</div>
+              <div class="empty-state-desc">The entity-relationship diagram will be rendered from live schema metadata.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div class="command-dock" aria-hidden="true">
@@ -373,18 +506,39 @@
 
 <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'dark',
+    themeVariables: {
+      primaryColor: '#1e293b',
+      primaryTextColor: '#f1f5f9',
+      primaryBorderColor: '#334155',
+      lineColor: '#22c55e',
+      secondaryColor: '#0f172a',
+      tertiaryColor: '#141e33',
+      edgeLabelBackground: '#0f172a',
+      fontSize: '14px',
+    },
+  });
+</script>
 <script type="module">
   import { initTabs } from './js/app.js';
   import { initDebug } from './js/debug.js';
   import { initBenchmark, loadAccounts } from './js/benchmark.js';
   import { initLogs, initHistory } from './js/logs.js';
+  import { initPlayground } from './js/playground.js';
+  import { initDashboard } from './js/dashboard.js';
 
   initTabs();
+  initDashboard();
   initDebug();
   initBenchmark();
   initLogs();
   initHistory();
   loadAccounts();
+  initPlayground();
 
   document.querySelectorAll('.nav-tab').forEach(tab => {
     tab.addEventListener('click', () => {

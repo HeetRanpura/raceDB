@@ -11,7 +11,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from routers import debug, benchmark, logs
+from routers import debug, benchmark, logs, playground, dashboard
 
 app = FastAPI(
     title="RaceDB — Real-Time Data Consistency Debugger",
@@ -41,6 +41,8 @@ app.add_middleware(
 app.include_router(debug.router)
 app.include_router(benchmark.router)
 app.include_router(logs.router)
+app.include_router(playground.router)
+app.include_router(dashboard.router)
 
 
 @app.get("/health", tags=["System"])
